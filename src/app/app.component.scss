@@ -1,0 +1,18 @@
+.audio-wrapper {
+  width: 200px;
+  height: 200px;
+  overflow: hidden;
+  font-family: Arial, Helvetica, sans-serif;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size:12px;
+  padding:20%;
+  background: radial-gradient(darken(cyan, 3), darken(cyan, 45)) no-repeat;
+  &.muted {
+      background: radial-gradient(darken(pink, 10), darken(pink, 80)) no-repeat;
+  }
+}
+ p {
+    text-align: center;
+    color: #fff;
+}

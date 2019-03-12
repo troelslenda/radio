@@ -1,0 +1,9 @@
+svg {
+  fill: #fff;
+  rect {
+      fill: black;
+      &.logo-color {
+          fill: #dce2e2;
+      }
+  }
+}
