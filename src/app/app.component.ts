@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { AudioService } from './service/audio.service';
 import { InfoService } from './service/info.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -9,14 +10,14 @@ import { InfoService } from './service/info.service';
 })
 export class AppComponent {
 
-  RadioProgramTitle: string;
+  programInfo: Observable<any>;
 
-  constructor(private audio: AudioService, private info: InfoService) {
+  constructor(public audio: AudioService, private info: InfoService) {
 
-    info.getInfo().subscribe(res => {
+    this.programInfo = info.getInfo();
+    this.programInfo.subscribe(res => {
       console.log(res);
-      this.RadioProgramTitle = res.title;
-    })
+    });
   }
 
   toggleRadio() {

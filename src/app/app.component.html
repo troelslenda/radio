@@ -1,4 +1,8 @@
 <div class="audio-wrapper" [class.muted]="audio.isMuted">
   <app-logo (click)="toggleRadio()"></app-logo>
-  <p>{{RadioProgramTitle}}</p>
+  <div *ngIf="programInfo | async as info">
+      <app-time [start]="info.startTime" [end]="info.endTime"></app-time>
+    <p>{{ info.title}}</p>
+  </div>
+
 </div>

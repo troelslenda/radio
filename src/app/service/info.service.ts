@@ -34,8 +34,9 @@ export class InfoService {
             // effectly overriding cache with cache, or the new data.
             this.cache = res;
             return {
-              title: res.title,
-              endTime: new Date(res.endTime)
+              title: res.Now.Title,
+              startTime: new Date(res.Now.StartTime),
+              endTime: new Date(res.Now.EndTime)
             };
           })
         );
