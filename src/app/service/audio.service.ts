@@ -16,6 +16,9 @@ export class AudioService {
   public unMute(): void {
     this.player.volume = 1;
   }
+  public halfMute(): void {
+    this.player.volume = 0.2;
+  }
   public Mute(): void {
     this.player.volume = 0;
   }

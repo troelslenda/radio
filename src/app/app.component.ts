@@ -16,9 +16,9 @@ export class AppComponent {
   constructor(public audio: AudioService, private info: InfoService, public auth: AuthService) {
 
     this.programInfo = info.getInfo();
-    this.programInfo.subscribe(res => {
-      console.log(res);
-    });
+    /*this.programInfo.subscribe(res => {
+     // console.log(res);
+    });*/
   }
 
   toggleRadio() {

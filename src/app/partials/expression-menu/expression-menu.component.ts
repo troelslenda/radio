@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ExpressionService } from 'src/app/service/expression.service';
 import { AuthService } from 'src/app/service/auth.service';
+import { fromEvent } from 'rxjs';
+import { AudioService } from 'src/app/service/audio.service';
 
 @Component({
   selector: 'app-expression-menu',
@@ -11,7 +13,7 @@ export class ExpressionMenuComponent implements OnInit {
 
   displayName: string;
 
-  constructor(private expressionService: ExpressionService, auth: AuthService) {
+  constructor(private expressionService: ExpressionService, auth: AuthService, private audio: AudioService) {
     auth.user.subscribe(user => this.displayName = user.displayName);
   }
 
@@ -24,7 +26,15 @@ export class ExpressionMenuComponent implements OnInit {
       res[0] && this.broadcastExpresion(res[0].payload.val())
     );
   }
-  express(expression: string): void {
+
+
+  express(expression: string, e): void {
+    this.audio.halfMute();
+    const sound = new Audio(`/assets/${expression}.mp3`);
+    sound.play();
+    fromEvent(sound, 'ended').subscribe(res =>{
+      this.audio.unMute();
+    });
     console.log(expression);
     this.expressionService.submitExpression(expression, this.displayName);
   }

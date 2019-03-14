@@ -11,12 +11,12 @@ export class InfoService {
   private cache: any;
   private serviceUrl = environment.playsnow;
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
-  private cacheIsValid = (cache: any) =>
+  private cacheIsValid = (cache: any): boolean =>
     cache &&
-    cache.endTime &&
-    new Date().getTime() < new Date(cache.endTime).getTime()
+    cache.Now.EndTime &&
+    new Date().getTime() < new Date(cache.Now.EndTime).getTime()
 
   getInfo(): Observable<any> {
     // Send data immediately and then every 5 seconds.
@@ -24,6 +24,7 @@ export class InfoService {
       flatMap(() => {
         // if the cache is invalidated by exceeding program endTime,
         // the observable will be created from http, otherwise from cache.
+        console.log('cache is valid?', this.cacheIsValid(this.cache))
         const observable = this.cacheIsValid(this.cache)
           ? of(this.cache)
           : this.http.get(this.serviceUrl);
