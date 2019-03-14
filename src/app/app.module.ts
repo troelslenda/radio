@@ -7,12 +7,14 @@ import { AudioService } from './service/audio.service';
 import { InfoService } from './service/info.service';
 import { HttpClientModule } from '@angular/common/http';
 import { TimeComponent } from './partials/time/time.component';
+import { ExpressionMenuComponent } from './partials/expression-menu/expression-menu.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LogoComponent,
-    TimeComponent
+    TimeComponent,
+    ExpressionMenuComponent
   ],
   imports: [
     BrowserModule,

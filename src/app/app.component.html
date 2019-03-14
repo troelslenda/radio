@@ -1,8 +1,10 @@
-<div class="audio-wrapper" [class.muted]="audio.isMuted">
-  <app-logo (click)="toggleRadio()"></app-logo>
-  <div *ngIf="programInfo | async as info">
-      <app-time [start]="info.startTime" [end]="info.endTime"></app-time>
-    <p>{{ info.title}}</p>
-  </div>
 
+<div class="audio-wrapper" [class.muted]="audio.isMuted">
+    <app-expression-menu></app-expression-menu>
+  <app-logo (click)="toggleRadio()"></app-logo>
+  <div *ngIf="programInfo | async as info" class="program-info">
+      <app-time [start]="info.startTime" [end]="info.endTime"></app-time>
+      <p>{{ info.title}}</p>
+    </div>
 </div>
+

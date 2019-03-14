@@ -7,13 +7,14 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class TimeComponent implements OnInit {
 
-  now : Date;
+  now: Date;
   @Input() start: Date;
   @Input() end: Date;
-  constructor() { }
+  constructor() {}
 
   ngOnInit() {
-    this.now = new Date();
+    setInterval(() => {
+      this.now = new Date();
+    }, 1000);
   }
-
 }
