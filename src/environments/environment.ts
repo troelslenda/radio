@@ -4,7 +4,15 @@
 
 export const environment = {
   production: false,
-  playsnow: 'http://localhost:4201'
+  playsnow: 'http://localhost:4201',
+  firebase: {
+    apiKey: 'AIzaSyAjQgHrR44Ueg_8hLlD4wh8dMfKhefB_-w',
+    authDomain: 'radio-8ac46.firebaseapp.com',
+    databaseURL: 'https://radio-8ac46.firebaseio.com',
+    projectId: 'radio-8ac46',
+    storageBucket: 'radio-8ac46.appspot.com',
+    messagingSenderId: '175871772077'
+  }
 };
 
 /*

@@ -1,10 +1,18 @@
+<div *ngIf="auth.user | async as user; else showLogin">
 
-<div class="audio-wrapper" [class.muted]="audio.isMuted">
-    <app-expression-menu></app-expression-menu>
-  <app-logo (click)="toggleRadio()"></app-logo>
-  <div *ngIf="programInfo | async as info" class="program-info">
-      <app-time [start]="info.startTime" [end]="info.endTime"></app-time>
-      <p>{{ info.title}}</p>
+    <div class="audio-wrapper" [class.muted]="audio.isMuted">
+        <app-expression-menu></app-expression-menu>
+      <app-logo (click)="toggleRadio()"></app-logo>
+      <div *ngIf="programInfo | async as info" class="program-info">
+          <app-time [start]="info.startTime" [end]="info.endTime"></app-time>
+          <p>{{ info.title}}</p>
+        </div>
     </div>
+
 </div>
+
+<ng-template #showLogin>
+    <p>Please login.</p>
+    <button (click)="auth.login()">Login with Google</button>
+  </ng-template>
 

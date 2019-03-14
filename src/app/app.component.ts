@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { AudioService } from './service/audio.service';
 import { InfoService } from './service/info.service';
 import { Observable } from 'rxjs';
+import { AuthService } from './service/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -12,7 +13,7 @@ export class AppComponent {
 
   programInfo: Observable<any>;
 
-  constructor(public audio: AudioService, private info: InfoService) {
+  constructor(public audio: AudioService, private info: InfoService, public auth: AuthService) {
 
     this.programInfo = info.getInfo();
     this.programInfo.subscribe(res => {
