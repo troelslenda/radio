@@ -19,6 +19,12 @@ export class ExpressionMenuComponent implements OnInit {
 
   broadcastExpresion(expression) {
     console.log(expression)
+    this.audio.halfMute();
+    const sound = new Audio(`/assets/${expression.expression}.mp3`);
+    sound.play();
+    fromEvent(sound, 'ended').subscribe(res =>{
+      this.audio.unMute();
+    });
   }
 
   ngOnInit() {
@@ -29,13 +35,6 @@ export class ExpressionMenuComponent implements OnInit {
 
 
   express(expression: string, e): void {
-    this.audio.halfMute();
-    const sound = new Audio(`/assets/${expression}.mp3`);
-    sound.play();
-    fromEvent(sound, 'ended').subscribe(res =>{
-      this.audio.unMute();
-    });
-    console.log(expression);
     this.expressionService.submitExpression(expression, this.displayName);
   }
 
