@@ -24,7 +24,7 @@ export class InfoService {
       flatMap(() => {
         // if the cache is invalidated by exceeding program endTime,
         // the observable will be created from http, otherwise from cache.
-        console.log('cache is valid?', this.cacheIsValid(this.cache))
+       // console.log('cache is valid?', this.cacheIsValid(this.cache))
         const observable = this.cacheIsValid(this.cache)
           ? of(this.cache)
           : this.http.get(this.serviceUrl);
@@ -34,10 +34,19 @@ export class InfoService {
           map((res: any) => {
             // effectly overriding cache with cache, or the new data.
             this.cache = res;
+           // console.log(res)
             return {
-              title: res.Now.Title,
+              Now: {
+                title: res.Now.Title,
               startTime: new Date(res.Now.StartTime),
               endTime: new Date(res.Now.EndTime)
+              },
+              Next: {
+                title: res.Next[0].Title,
+                startTime: new Date(res.Next[0].StartTime),
+                endTime: new Date(res.Next[0].EndTime)
+              }
+
             };
           })
         );

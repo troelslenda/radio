@@ -1,13 +1,11 @@
 :host {
-  position: absolute;
-  left:0;
-  top:0;
-  right:0;
   text-align: center;
+  display: block;
 }
 
 a {
+  display: inline-block;
   cursor: pointer;
-  font-size: 4em;
-  margin: 0 20px;
+  font-size: 3em;
+  margin: 10px;
 }

@@ -1,0 +1,18 @@
+<div>
+  <p>playing now</p>
+  <h1>{{ info.Now.title }}</h1>
+  <small>
+    {{ info.Now.startTime | date: "HH:mm" }} -
+    {{ info.Now.endTime | date: "HH:mm" }}
+  </small>
+
+</div>
+<div>
+  <p>up next</p>
+  <h1>{{ info.Next.title }}</h1>
+  <small>
+    {{ info.Next.startTime | date: "HH:mm" }} -
+    {{ info.Next.endTime | date: "HH:mm" }}
+  </small>
+
+</div>

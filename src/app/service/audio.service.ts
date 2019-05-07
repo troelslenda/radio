@@ -6,7 +6,7 @@ import { Injectable } from '@angular/core';
 export class AudioService {
 
   private player;
-  private streamUrl = 'http://live-icy.gss.dr.dk/A/A05H.mp3';
+  private streamUrl = 'https://live-icy.dr.dk/A/A05H.mp3';
 
   constructor() {
     this.player = new Audio(this.streamUrl);

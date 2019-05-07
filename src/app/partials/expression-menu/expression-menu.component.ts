@@ -11,31 +11,50 @@ import { AudioService } from 'src/app/service/audio.service';
 })
 export class ExpressionMenuComponent implements OnInit {
 
+  user;
   displayName: string;
 
   constructor(private expressionService: ExpressionService, auth: AuthService, private audio: AudioService) {
-    auth.user.subscribe(user => this.displayName = user.displayName);
+    auth.user.subscribe(user => this.user = user);
+  }
+
+  getSoundFileName(expression) {
+    switch (expression) {
+      case '😂':
+        return 'lol';
+      case '🤯':
+        return 'explode';
+      case '💩':
+        return 'fart';
+      case '🏎':
+        return 'racecar';
+    }
   }
 
   broadcastExpresion(expression) {
-    console.log(expression)
+
     this.audio.halfMute();
-    const sound = new Audio(`/assets/${expression.expression}.mp3`);
+    const sound = new Audio(`/assets/${this.getSoundFileName(expression.expression)}.mp3`);
     sound.play();
-    fromEvent(sound, 'ended').subscribe(res =>{
+    fromEvent(sound, 'ended').subscribe(res => {
       this.audio.unMute();
     });
   }
 
   ngOnInit() {
-    this.expressionService.getLastExpression().subscribe(res =>
-      res[0] && this.broadcastExpresion(res[0].payload.val())
+    this.expressionService.getExpressions().subscribe(res => {
+        const last: any = res.pop();
+        // If last expression is sent less than a second ago.
+        if (new Date().getTime() - 1000 < last.createdAt) {
+          this.broadcastExpresion(last);
+        }
+      }
     );
   }
 
 
-  express(expression: string, e): void {
-    this.expressionService.submitExpression(expression, this.displayName);
+  express(e): void {
+    this.expressionService.submitExpression(e.target.innerHTML, this.user);
   }
 
 }
