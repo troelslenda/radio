@@ -7,13 +7,25 @@
       <app-logo (click)="toggleRadio()"></app-logo>
       <app-program-info *ngIf="programInfo | async as info" [info]="info"></app-program-info>
     </div>
+    <button (click)="auth.logout()">Logout</button>
+
+    <app-logged-in-users></app-logged-in-users>
+
+    <pre style="text-transform: initial">
+  {{ user | json }}
+
+</pre>
+<app-expression-list></app-expression-list>
 </div>
 
 
 <ng-template #showLogin>
-    <p>Please login.</p>
-    <button (click)="auth.login()">Login with Google</button>
+  <div class="login-box">
+    <h1>Please login</h1>
+    <img src="assets/btn_google_signin_dark_normal_web.png" alt="" (click)="auth.googleLogin()">
+    <img src="assets/ms-symbollockup_signin_dark.png" alt="" (click)="auth.msLogin()">
+  </div>
   </ng-template>
 
 
-  <app-expression-list></app-expression-list>
+

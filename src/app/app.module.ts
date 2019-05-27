@@ -18,6 +18,7 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 import { ExpressionListComponent } from './partials/expression-list/expression-list.component';
 import { TimeAgoPipe } from "time-ago-pipe";
 import { ProgramInfoComponent } from './partials/program-info/program-info.component';
+import { LoggedInUsersComponent } from './partials/logged-in-users/logged-in-users.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { ProgramInfoComponent } from './partials/program-info/program-info.compo
     ExpressionListComponent,
     TimeAgoPipe,
     ProgramInfoComponent,
+    LoggedInUsersComponent,
   ],
   imports: [
     BrowserModule,
