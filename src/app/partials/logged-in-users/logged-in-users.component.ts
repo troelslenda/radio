@@ -1,15 +1,18 @@
 import { Component, OnInit } from '@angular/core';
+import { LoggedinUsersService } from 'src/app/services/loggedin-users.service';
 
 @Component({
   selector: 'app-logged-in-users',
   templateUrl: './logged-in-users.component.html',
-  styleUrls: ['./logged-in-users.component.sass']
 })
 export class LoggedInUsersComponent implements OnInit {
 
-  constructor() { }
+  loggedinUsers;
+
+  constructor(private loggedinService: LoggedinUsersService) { }
 
   ngOnInit() {
+    this.loggedinUsers = this.loggedinService.getUsers();
   }
 
 }

@@ -1,3 +1,7 @@
-<p>
-  logged-in-users works!
-</p>
+<ul>
+  <li *ngFor="let user of loggedinUsers | async">
+
+    <app-user-tile [user]="user"></app-user-tile>
+
+  </li>
+</ul>

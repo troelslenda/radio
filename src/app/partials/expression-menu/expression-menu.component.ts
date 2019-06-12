@@ -32,12 +32,17 @@ export class ExpressionMenuComponent implements OnInit {
   }
 
   broadcastExpresion(expression) {
+    const interfere = !this.audio.isMuted;
+    if (interfere) {
+      this.audio.halfMute();
+    }
 
-    this.audio.halfMute();
     const sound = new Audio(`/assets/${this.getSoundFileName(expression.expression)}.mp3`);
     sound.play();
     fromEvent(sound, 'ended').subscribe(res => {
-      this.audio.unMute();
+      if (interfere) {
+        this.audio.unMute();
+      }
     });
   }
 

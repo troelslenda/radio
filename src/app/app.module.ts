@@ -19,6 +19,7 @@ import { ExpressionListComponent } from './partials/expression-list/expression-l
 import { TimeAgoPipe } from "time-ago-pipe";
 import { ProgramInfoComponent } from './partials/program-info/program-info.component';
 import { LoggedInUsersComponent } from './partials/logged-in-users/logged-in-users.component';
+import { UserTileComponent } from './partials/user-tile/user-tile.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { LoggedInUsersComponent } from './partials/logged-in-users/logged-in-use
     TimeAgoPipe,
     ProgramInfoComponent,
     LoggedInUsersComponent,
+    UserTileComponent,
   ],
   imports: [
     BrowserModule,

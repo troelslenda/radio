@@ -1,13 +1,17 @@
 <div>
 <div @itemAnim [title]="express(expression.displayName, expression.expression, expression.createdAt | timeAgo)" *ngFor="let expression of expressions | async; let i = index; trackBy: trackFbObjects">
-  <figure>
+  <div *ngIf="expression.photoURL">
+    <figure>
       <img [src]="expression.photoURL" alt="">
       <p>{{ expression.expression }}</p>
     </figure>
+
   <p class="description">
     {{ expression.createdAt | timeAgo }}
         <!--{{ }}-->
   </p>
+  </div>
+  <p *ngIf="!expression.photoURL">{{express(expression.displayName, expression.expression, expression.createdAt | timeAgo)}} </p>
 </div>
 </div>
 
